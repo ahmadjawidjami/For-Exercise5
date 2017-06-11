@@ -39,13 +39,13 @@ let abi =compiledContract.info.abiDefinition;
 var MyContract = web3.eth.contract(abi);
 
 // initiate contract for an address
-MyContract.address = "0x2e4d8fac1ff3b1e59ad5254406dae8b49627231b";
-var myContractInstance = MyContract.at('0x8d0c9ffa6ea07151c10fe349ff25567648255226');
+//MyContract.address = "0x2c33e1266e1e9340cc131b59b3174b4ef20ba9d3";
+var myContractInstance = MyContract.at('0x2c33e1266e1e9340cc131b59b3174b4ef20ba9d3');
 // myContractInstance.giveMessage.call("Java");
 
 
 //
-myContractInstance.setMessage("Java Programming", {from: "0x2e4d8fac1ff3b1e59ad5254406dae8b49627231b", gas:4000000});
+myContractInstance.setMessage("Java Programming", {from: "0x5f34985becc9a7946613082e1ef9042617102289", gas:4000000});
 
 var result = myContractInstance.getMessage();
 console.log(result);
