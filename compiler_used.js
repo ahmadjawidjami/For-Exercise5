@@ -20,16 +20,16 @@ web3.setProvider(new web3.providers.HttpProvider());
 
 
 
-var balance=web3.eth.getBalance("0x2e4d8fac1ff3b1e59ad5254406dae8b49627231b");
-console.log(balance);//instanceofBigNumber
-console.log(balance.toString());//'1000000000000'
-console.log(balance.toNumber());
+// var balance=web3.eth.getBalance("0xde4bb2bcd5fa109a399b848d2d37baca404d70e7");
+// console.log(balance);//instanceofBigNumber
+// console.log(balance.toString());//'1000000000000'
+// console.log(balance.toNumber());
 
 const fs = require("fs");
 const solc = require('solc');
 var utf8 = require('utf8');
 
-let source = fs.readFileSync('Hello.sol', 'utf8');
+let source = fs.readFileSync('Project.sol', 'utf8');
 
 var compiledContract = web3.eth.compile.solidity(source);
 //
@@ -40,15 +40,21 @@ var MyContract = web3.eth.contract(abi);
 
 // initiate contract for an address
 //MyContract.address = "0x2c33e1266e1e9340cc131b59b3174b4ef20ba9d3";
-var myContractInstance = MyContract.at('0x2c33e1266e1e9340cc131b59b3174b4ef20ba9d3');
+var myContractInstance = MyContract.at('0xde4bb2bcd5fa109a399b848d2d37baca404d70e7');
 // myContractInstance.giveMessage.call("Java");
 
 
 //
-myContractInstance.setMessage("Java Programming", {from: "0x5f34985becc9a7946613082e1ef9042617102289", gas:4000000});
+//myContractInstance.setMessage("Java Programming", {from: "0x5f34985becc9a7946613082e1ef9042617102289", gas:4000000});
 
-var result = myContractInstance.getMessage();
-console.log(result);
+//myContractInstance.transfer('0xde4bb2bcd5fa109a399b848d2d37baca404d70e7',2000, {from: "0x564fabf91a85a7a89b67e44bc08ecb89f5dde422"});
+
+myContractInstance.depositFund({value: 1000, from: "0x564fabf91a85a7a89b67e44bc08ecb89f5dde422", gas: 40000});
+
+console.log(myContractInstance.getBalance());
+
+// var result = myContractInstance.getMessage();
+// console.log(result);
 
 
 //var myContractInstance = MyContract.at(myContractAddress);
